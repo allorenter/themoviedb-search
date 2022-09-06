@@ -13,7 +13,7 @@ function SearchMovies() {
   return (
     <>
       <InputSearch value={searchTerm} onChange={onChange} />
-      {data !== undefined && <SearchResults movieSearchResults={data} />}
+      {data !== undefined && <SearchResults moviesSearch={data} />}
     </>
   );
 }

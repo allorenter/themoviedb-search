@@ -1,4 +1,4 @@
-export interface SearchResultMovie {
+export default interface MovieResult {
   adult: boolean;
   backdropPath: string;
   id: number;
@@ -9,11 +9,4 @@ export interface SearchResultMovie {
   releaseDate: string;
   title: string;
   voteAverage: number;
-}
-
-export interface MovieSearchResults {
-  page: number;
-  results: SearchResultMovie[];
-  totalPages: number;
-  totalResults: number;
 }

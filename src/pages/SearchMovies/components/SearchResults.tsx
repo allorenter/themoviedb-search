@@ -1,11 +1,10 @@
-import { MovieSearchResults } from '../types/MovieSearchResults';
+import MoviesSearch from '../types/MoviesSearch';
 
-function SearchResults({ movieSearchResults }: { movieSearchResults: MovieSearchResults }) {
+function SearchResults({ moviesSearch }: { moviesSearch: MoviesSearch }) {
   return (
     <>
-      search result
-      {movieSearchResults.results.map((searchResultsMovie) => {
-        return <div key={searchResultsMovie.id}>{searchResultsMovie.title}</div>;
+      {moviesSearch.results.map((movieResult) => {
+        return <div key={movieResult.id}>{movieResult.title}</div>;
       })}
     </>
   );

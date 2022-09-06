@@ -1,10 +1,10 @@
-import createAddaptedMovieSearchResults from '../adapters/createAddaptedMovieSearchResults';
-import { TMDBMovieSearchResults } from '../types/TMBDMovieSearchResults';
-import { MovieSearchResults } from '../types/MovieSearchResults';
+import createAddaptedMoviesSearch from '../adapters/createAddaptedMoviesSearch';
+import TMDBMoviesSearch from '../types/TMDBMoviesSearch';
+import MoviesSearch from '../types/MoviesSearch';
 
 const API_KEY = '8f781d70654b5a6f2fa69770d1d115a3';
 
-async function searchMovies(query: string): Promise<MovieSearchResults> {
+async function searchMovies(query: string): Promise<MoviesSearch> {
   const params = new URLSearchParams({
     api_key: API_KEY,
     query,
@@ -17,9 +17,9 @@ async function searchMovies(query: string): Promise<MovieSearchResults> {
       'Content-Type': 'application/json;charset=utf-8',
     },
   });
-  const tmdbSearchResults: TMDBMovieSearchResults = await response.json();
-  console.log('tmdbSearchResults', tmdbSearchResults);
-  return createAddaptedMovieSearchResults(tmdbSearchResults);
+  const tmdbMoviesSearch: TMDBMoviesSearch = await response.json();
+  console.log('tmdbSearchResults', tmdbMoviesSearch);
+  return createAddaptedMoviesSearch(tmdbMoviesSearch);
 }
 
 export default searchMovies;

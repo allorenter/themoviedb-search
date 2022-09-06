@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import searchMovies from '../services/searchMovies';
 
 function useSearchMovies() {
