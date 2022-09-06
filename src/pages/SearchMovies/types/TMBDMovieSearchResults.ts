@@ -1,4 +1,4 @@
-interface MovieSearchResult {
+export interface TMDBSearchResultMovie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -15,9 +15,9 @@ interface MovieSearchResult {
   vote_count: number;
 }
 
-export default interface TMDBMovieSearchResults {
+export interface TMDBMovieSearchResults {
   page: number;
-  results: MovieSearchResult[];
+  results: TMDBSearchResultMovie[];
   total_pages: number;
   total_results: number;
 }

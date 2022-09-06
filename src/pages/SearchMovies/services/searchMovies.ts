@@ -1,13 +1,10 @@
+import createAddaptedMovieSearchResults from '../adapters/createAddaptedMovieSearchResults';
+import { TMDBMovieSearchResults } from '../types/TMBDMovieSearchResults';
+import { MovieSearchResults } from '../types/MovieSearchResults';
+
 const API_KEY = '8f781d70654b5a6f2fa69770d1d115a3';
 
-async function searchMovies<TMDBMovieSearchResults>(
-  query: string,
-): Promise<TMDBMovieSearchResults | null> {
-  if (query.length === 0) {
-    return new Promise((resolve) => {
-      return resolve(null);
-    });
-  }
+async function searchMovies(query: string): Promise<MovieSearchResults> {
   const params = new URLSearchParams({
     api_key: API_KEY,
     query,
@@ -20,7 +17,9 @@ async function searchMovies<TMDBMovieSearchResults>(
       'Content-Type': 'application/json;charset=utf-8',
     },
   });
-  return await response.json();
+  const tmdbSearchResults: TMDBMovieSearchResults = await response.json();
+  console.log('tmdbSearchResults', tmdbSearchResults);
+  return createAddaptedMovieSearchResults(tmdbSearchResults);
 }
 
 export default searchMovies;
