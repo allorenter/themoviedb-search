@@ -1,6 +1,8 @@
 const API_KEY = '8f781d70654b5a6f2fa69770d1d115a3';
 
-async function searchMovies<TMDBSearchResults>(query: string): Promise<TMDBSearchResults | null> {
+async function searchMovies<TMDBMovieSearchResults>(
+  query: string,
+): Promise<TMDBMovieSearchResults | null> {
   if (query.length === 0) {
     return new Promise((resolve) => {
       return resolve(null);
