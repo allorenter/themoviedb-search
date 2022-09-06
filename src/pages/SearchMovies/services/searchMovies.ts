@@ -1,6 +1,11 @@
 const API_KEY = '8f781d70654b5a6f2fa69770d1d115a3';
 
-async function searchMovies<TMDBSearch>(query: string): Promise<TMDBSearch> {
+async function searchMovies<TMDBSearchResults>(query: string): Promise<TMDBSearchResults | null> {
+  if (query.length === 0) {
+    return new Promise((resolve) => {
+      return resolve(null);
+    });
+  }
   const params = new URLSearchParams({
     api_key: API_KEY,
     query,
@@ -16,4 +21,4 @@ async function searchMovies<TMDBSearch>(query: string): Promise<TMDBSearch> {
   return await response.json();
 }
 
-export { searchMovies };
+export default searchMovies;

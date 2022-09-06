@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
-import { searchMovies } from './services/movie';
+import useSearchMovies from './hooks/useSearchMovies';
 
 function SearchMovies() {
-  useEffect(() => {
-    const searchResult = searchMovies('el señor de los anillos').then((data) => {
-      console.log('data', data);
-    });
-  }, []);
+  const { searchTerm, setSearchTerm, data } = useSearchMovies();
 
-  return <>Search page</>;
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchTerm(value);
+  };
+
+  return <input value={searchTerm} onChange={onChange} />;
 }
 
 export default SearchMovies;
