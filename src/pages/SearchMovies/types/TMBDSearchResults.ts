@@ -16,7 +16,7 @@ interface MovieResult {
   vote_count: number;
 }
 
-export interface TMDBSearchResults {
+export default interface TMDBSearchResults {
   page: number;
   results: MovieResult[];
   total_pages: number;
