@@ -1,4 +1,6 @@
+import InputSearch from './components/InputSearch';
 import useSearchMovies from './hooks/useSearchMovies';
+import SearchResults from './components/SearchResults';
 
 function SearchMovies() {
   const { searchTerm, setSearchTerm, data } = useSearchMovies();
@@ -8,7 +10,12 @@ function SearchMovies() {
     setSearchTerm(value);
   };
 
-  return <input value={searchTerm} onChange={onChange} />;
+  return (
+    <>
+      <InputSearch value={searchTerm} onChange={onChange} />
+      {data !== undefined && <SearchResults movieSearchResults={data} />}
+    </>
+  );
 }
 
 export default SearchMovies;
