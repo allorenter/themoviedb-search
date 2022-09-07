@@ -1,11 +1,11 @@
-export interface Movie {
+export default interface Movie {
   adult: boolean;
   backdropPath: string;
   budget: number;
   genres: Array<{ id: number; name: string }>;
   homepage: string;
   id: number;
-  imdb_id: string;
+  imdbId: string;
   originalLanguage: string;
   originalTitle: string;
   overview: string;

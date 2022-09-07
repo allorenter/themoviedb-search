@@ -1,6 +1,6 @@
 import { Genre, ProductionCompany, ProductionCountry, SpokenLanguage } from '@/types/TMDB';
 
-export interface TMDBMovie {
+export default interface TMDBMovie {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection?: any;

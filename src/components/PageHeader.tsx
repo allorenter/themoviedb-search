@@ -1,7 +1,7 @@
 import ArrowLeft from '@/icons/ArrowLeft';
 import { Title } from '@mantine/core';
 
-function PageHeader({ text, showGoBackButton }: { text: string; showGoBackButton: boolean }) {
+function PageHeader({ text, showGoBackButton }: { text?: string; showGoBackButton: boolean }) {
   return (
     <Title
       sx={() => ({
