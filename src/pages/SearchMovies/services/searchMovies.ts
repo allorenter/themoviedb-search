@@ -18,7 +18,6 @@ async function searchMovies(query: string): Promise<MoviesSearch> {
     },
   });
   const tmdbMoviesSearch: TMDBMoviesSearch = await response.json();
-  console.log('tmdbSearchResults', tmdbMoviesSearch);
   return createAddaptedMoviesSearch(tmdbMoviesSearch);
 }
 
