@@ -1,5 +1,12 @@
+import PageHeader from '@/components/PageHeader';
+
 function MyList() {
-  return <>MyList page</>;
+  return (
+    <>
+      <PageHeader text='Mi Lista' showGoBackButton={true} />
+      MyList page
+    </>
+  );
 }
 
 export default MyList;

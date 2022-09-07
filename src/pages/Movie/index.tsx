@@ -1,5 +1,9 @@
-function MyList() {
-  return <>MyList page</>;
+import { useParams } from 'react-router-dom';
+
+function Movie() {
+  const { movieId } = useParams();
+
+  return <>{movieId}</>;
 }
 
-export default MyList;
+export default Movie;
