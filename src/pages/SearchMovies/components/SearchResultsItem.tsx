@@ -23,6 +23,9 @@ function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
         component={Link}
         to={`/movie/${movieResult.id}`}
         radius={4}
+        sx={() => ({
+          height: 'auto',
+        })}
       >
         <div>
           <Space h='xs' />
