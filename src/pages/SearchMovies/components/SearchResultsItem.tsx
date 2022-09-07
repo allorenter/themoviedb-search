@@ -1,4 +1,4 @@
-import { Image } from '@mantine/core';
+import { Button, Image, NavLink, Space } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import MovieResult from '../types/MovieResult';
 
@@ -17,10 +17,20 @@ function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
 
   return (
     <div>
-      <Link to={`/movie/${movieResult.id}`}>
-        <Image src={imagePath || undefined} width={180} />
-        {movieResult.title}
-      </Link>
+      <Button
+        variant='subtle'
+        color='dark'
+        component={Link}
+        to={`/movie/${movieResult.id}`}
+        radius={4}
+      >
+        <div>
+          <Space h='xs' />
+          <Image src={imagePath || undefined} width={180} radius={4} />
+          <Space h='xs' />
+          {movieResult.title}
+        </div>
+      </Button>
     </div>
   );
 }
