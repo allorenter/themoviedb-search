@@ -1,13 +1,21 @@
 import PageHeader from '@/components/PageHeader';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
-import { Badge, Box, Grid, Group, Image, Space, Text } from '@mantine/core';
+import { Badge, Box, Center, Grid, Group, Image, Loader, Space, Text } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import useGetMovie from './hooks/useGetMovie';
 
 function Movie() {
   const { movieId } = useParams();
-  const { data } = useGetMovie(movieId);
+  const { data, isLoading } = useGetMovie(movieId);
   const imagePath = useTMDBImagePath(data?.posterPath || '', 'w342');
+
+  if (isLoading) {
+    return (
+      <Center mt={12}>
+        <Loader size={'lg'} color={'gray'} />
+      </Center>
+    );
+  }
 
   const pageHeaderTitle = `${data?.title} (${data?.year})`;
 
@@ -21,6 +29,7 @@ function Movie() {
           <PageHeader title={pageHeaderTitle} description={data?.originalTitle} showGoBackButton />
           <Space h='lg' />
           <Group>
+            {/* FALTA COMPONENTE PARA MOSTRAR LA VALORACIÓN DE LOS USUARIOS */}
             <Text weight={700}>{data?.runtime}</Text>
             <Text weight={700}>{data?.releaseDate}</Text>
             <Text>

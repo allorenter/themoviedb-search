@@ -2,7 +2,7 @@ import InputSearch from './components/InputSearch';
 import useSearchMovies from './hooks/useSearchMovies';
 import SearchResults from './components/SearchResults';
 import PageHeader from '@/components/PageHeader';
-import { Loader, Space } from '@mantine/core';
+import { Loader, Space, Center } from '@mantine/core';
 
 function SearchMovies() {
   const { searchTerm, setSearchTerm, data, isFetching, isLoading } = useSearchMovies();
@@ -17,7 +17,13 @@ function SearchMovies() {
       <PageHeader title='Buscador de películas' showGoBackButton={false} />
       <InputSearch value={searchTerm} onChange={onChange} />
       <Space h='md' />
-      {isFetching && isLoading ? <Loader color={'gray'} /> : <SearchResults moviesSearch={data} />}
+      {isFetching && isLoading ? (
+        <Center mt={12}>
+          <Loader color={'gray'} />
+        </Center>
+      ) : (
+        <SearchResults moviesSearch={data} />
+      )}
     </>
   );
 }
