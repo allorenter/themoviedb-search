@@ -1,4 +1,4 @@
-import { TextInput } from '@mantine/core';
+import { Input } from '@mantine/core';
 
 function InputSearch({
   value,
@@ -7,7 +7,7 @@ function InputSearch({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
-  return <TextInput value={value} onChange={onChange} />;
+  return <Input value={value} onChange={onChange} type={'search'} />;
 }
 
 export default InputSearch;
