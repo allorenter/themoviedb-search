@@ -42,7 +42,7 @@ function Movie() {
           <Space h='md' />
           <Text>{data?.overview}</Text>
           <Space h='xl' />
-          {movieId && <RateMovie movieId={movieId} />}
+          {data?.id && <RateMovie movie={data} />}
         </Grid.Col>
       </Grid>
     </>

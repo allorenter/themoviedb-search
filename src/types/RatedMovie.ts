@@ -1,5 +1,7 @@
 export default interface RatedMovie {
-  id: string;
+  id: number;
+  title?: string;
+  posterPath?: string;
   rate?: number;
   comments?: string;
   timestamp: number;

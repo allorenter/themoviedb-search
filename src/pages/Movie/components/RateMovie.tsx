@@ -14,11 +14,12 @@ import RatedMovie from '@/types/RatedMovie';
 import useRateMovie from '../hooks/useRateMovie';
 import { showNotification } from '@mantine/notifications';
 import useGetRatedMovie from '../hooks/useGetRatedMovie';
+import Movie from '../types/Movie';
 
-function RateMovie({ movieId }: { movieId: string }) {
+function RateMovie({ movie }: { movie: Movie }) {
   const [rate, setRate] = useState<number | undefined>();
   const [comments, setComments] = useState<string | undefined>();
-  const { data, isLoading } = useGetRatedMovie(movieId);
+  const { data, isLoading } = useGetRatedMovie(movie?.id);
   const mutation = useRateMovie();
 
   useEffect(() => {
@@ -34,10 +35,17 @@ function RateMovie({ movieId }: { movieId: string }) {
     setComments(e.target.value);
   };
 
-  const onSubmit = (e: React.SyntheticEvent) => {
+  const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const formData: RatedMovie = { id: movieId, rate, comments, timestamp: Date.now() };
-    mutation.mutateAsync(formData).then(() => {
+    const formData: RatedMovie = {
+      id: movie.id,
+      title: movie.title,
+      posterPath: movie.posterPath,
+      rate,
+      comments,
+      timestamp: Date.now(),
+    };
+    return mutation.mutateAsync(formData).then(() => {
       showNotification({
         message: 'Película valorada correctamente',
         autoClose: 2000,
