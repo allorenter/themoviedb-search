@@ -6,6 +6,7 @@ import Movie from '@/pages/Movie';
 import MyList from '@/pages/MyList';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Layout from '@/components/Layout';
+import { ProvideSearchMoviesTerm } from './global-states/useSearchMoviesTerm';
 
 const queryClient = new QueryClient();
 
@@ -13,15 +14,17 @@ export default function App() {
   return (
     <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path='movie/:movieId' element={<Movie />} />
-              <Route path='mylist' element={<MyList />} />
-              <Route path='' element={<SearchMovies />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
+        <ProvideSearchMoviesTerm>
+          <BrowserRouter>
+            <Layout>
+              <Routes>
+                <Route path='movie/:movieId' element={<Movie />} />
+                <Route path='mylist' element={<MyList />} />
+                <Route path='' element={<SearchMovies />} />
+              </Routes>
+            </Layout>
+          </BrowserRouter>
+        </ProvideSearchMoviesTerm>
       </QueryClientProvider>
     </MantineProvider>
   );
