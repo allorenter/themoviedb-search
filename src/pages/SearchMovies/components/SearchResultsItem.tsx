@@ -1,19 +1,10 @@
+import useTMDBImagePath from '@/hooks/useTMDBImagePath';
 import { Button, Image, Text, Space } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import MovieResult from '../types/MovieResult';
 
-const getImagePath = (fileSize: string, imagePath: string, svg = false): string | null => {
-  if (!imagePath) {
-    return null;
-  }
-  const baseUrl = `https://image.tmdb.org/t/p/`;
-  const imagePathArr = imagePath.split('.');
-  const imageFormat = svg ? 'svg' : imagePathArr[1];
-  return `${baseUrl}${fileSize}${imagePathArr[0]}.${imageFormat}`;
-};
-
 function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
-  const imagePath = getImagePath('w342', movieResult.posterPath);
+  const imagePath = useTMDBImagePath(movieResult.posterPath, 'w342');
 
   const { id, title, releaseDate } = movieResult;
   const year = new Date(releaseDate).getFullYear();
