@@ -1,6 +1,6 @@
 import PageHeader from '@/components/PageHeader';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
-import { Grid, Image } from '@mantine/core';
+import { Badge, Box, Grid, Group, Image, Space, Text } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import useGetMovie from './hooks/useGetMovie';
 
@@ -19,6 +19,18 @@ function Movie() {
         </Grid.Col>
         <Grid.Col span={7}>
           <PageHeader title={pageHeaderTitle} description={data?.originalTitle} showGoBackButton />
+          <Space h='lg' />
+          <Group>
+            <Text weight={700}>{data?.runtime}</Text>
+            <Text weight={700}>{data?.releaseDate}</Text>
+            <Text>
+              {data?.genres.map(({ id, name }) => (
+                <Badge key={id}>{name}</Badge>
+              ))}
+            </Text>
+          </Group>
+          <Space h='md' />
+          <Text>{data?.overview}</Text>
         </Grid.Col>
       </Grid>
     </>
