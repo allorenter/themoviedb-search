@@ -4,7 +4,7 @@ import TMDBMovie from '../types/TMDBMovie';
 
 const API_KEY = '8f781d70654b5a6f2fa69770d1d115a3';
 
-async function getMovie(movieId: string): Promise<Movie> {
+async function getMovie(movieId?: string): Promise<Movie> {
   const params = new URLSearchParams({
     api_key: API_KEY,
     language: 'es',
