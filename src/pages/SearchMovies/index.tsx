@@ -14,7 +14,7 @@ function SearchMovies() {
 
   return (
     <>
-      <PageHeader text='Buscador de películas' showGoBackButton={false} />
+      <PageHeader title='Buscador de películas' showGoBackButton={false} />
       <InputSearch value={searchTerm} onChange={onChange} />
       <Space h='md' />
       {isFetching && isLoading ? <Loader color={'gray'} /> : <SearchResults moviesSearch={data} />}

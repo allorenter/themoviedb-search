@@ -23,4 +23,5 @@ export default interface Movie {
   video: boolean;
   voteAverage: number;
   voteCount: number;
+  year: number;
 }

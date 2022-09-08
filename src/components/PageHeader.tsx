@@ -1,7 +1,15 @@
-import { Title } from '@mantine/core';
+import { Text, Title } from '@mantine/core';
 import GoBackLink from './GoBacklINK';
 
-function PageHeader({ text, showGoBackButton }: { text?: string; showGoBackButton: boolean }) {
+function PageHeader({
+  title,
+  description,
+  showGoBackButton,
+}: {
+  title?: string;
+  description?: string;
+  showGoBackButton: boolean;
+}) {
   return (
     <Title
       sx={() => ({
@@ -13,7 +21,10 @@ function PageHeader({ text, showGoBackButton }: { text?: string; showGoBackButto
       mb={12}
     >
       {showGoBackButton && <GoBackLink />}
-      {text}
+      <div>
+        {title}
+        <Text size={'xs'}>{description}</Text>
+      </div>
     </Title>
   );
 }

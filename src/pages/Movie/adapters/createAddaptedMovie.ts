@@ -2,6 +2,8 @@ import Movie from '../types/Movie';
 import TMDBMovie from '../types/TMDBMovie';
 
 function createAddaptedMovie(tmdbMovie: TMDBMovie): Movie {
+  const year = new Date(tmdbMovie.release_date).getFullYear();
+
   return {
     adult: tmdbMovie.adult,
     backdropPath: tmdbMovie.backdrop_path,
@@ -24,6 +26,7 @@ function createAddaptedMovie(tmdbMovie: TMDBMovie): Movie {
     video: tmdbMovie.video,
     voteAverage: tmdbMovie.vote_average,
     voteCount: tmdbMovie.vote_count,
+    year,
   };
 }
 

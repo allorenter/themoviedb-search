@@ -9,4 +9,5 @@ export default interface MovieResult {
   releaseDate: string;
   title: string;
   voteAverage: number;
+  year: number;
 }

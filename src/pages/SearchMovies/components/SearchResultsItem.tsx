@@ -6,8 +6,7 @@ import MovieResult from '../types/MovieResult';
 function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
   const imagePath = useTMDBImagePath(movieResult.posterPath, 'w342');
 
-  const { id, title, releaseDate } = movieResult;
-  const year = new Date(releaseDate).getFullYear();
+  const { id, title, year } = movieResult;
 
   return (
     <div>

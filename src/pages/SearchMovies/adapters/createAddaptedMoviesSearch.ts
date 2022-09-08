@@ -5,6 +5,7 @@ import MovieResult from '../types/MovieResult';
 
 function createAddaptedMoviesSearch(searchResults: TMDBMoviesSearch): MoviesSearch {
   const results: MovieResult[] = searchResults.results.map((movieResult: TMDBMovieResult) => {
+    const year = new Date(movieResult.release_date).getFullYear();
     return {
       adult: movieResult.adult,
       backdropPath: movieResult.backdrop_path,
@@ -16,8 +17,10 @@ function createAddaptedMoviesSearch(searchResults: TMDBMoviesSearch): MoviesSear
       releaseDate: movieResult.release_date,
       title: movieResult.title,
       voteAverage: movieResult.vote_average,
+      year,
     };
   });
+
   return {
     page: searchResults.page,
     results,
