@@ -1,6 +1,5 @@
 import RatedMovie from '@/types/RatedMovie';
-
-const LOCALSTORAGE_RATEDMOVIES_KEY = 'ratedMovies';
+import { LOCALSTORAGE_RATEDMOVIES_KEY } from '../../../constants';
 
 function getLocalStorageRatedMovies() {
   return JSON.parse(localStorage.getItem(LOCALSTORAGE_RATEDMOVIES_KEY) || '[]');
