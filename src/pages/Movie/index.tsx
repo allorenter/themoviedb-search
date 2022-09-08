@@ -2,10 +2,11 @@ import PageHeader from '@/components/PageHeader';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
 import { Badge, Box, Center, Grid, Group, Image, Loader, Space, Text } from '@mantine/core';
 import { useParams } from 'react-router-dom';
+import RateMovie from './components/RateMovie';
 import useGetMovie from './hooks/useGetMovie';
 
 function Movie() {
-  const { movieId } = useParams();
+  const { movieId } = useParams<string>();
   const { data, isLoading } = useGetMovie(movieId);
   const imagePath = useTMDBImagePath(data?.posterPath || '', 'w342');
 
@@ -40,6 +41,8 @@ function Movie() {
           </Group>
           <Space h='md' />
           <Text>{data?.overview}</Text>
+          <Space h='xl' />
+          {movieId && <RateMovie movieId={movieId} />}
         </Grid.Col>
       </Grid>
     </>

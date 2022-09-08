@@ -1,17 +1,20 @@
 import { useEffect } from 'react';
-import { UseQueryResult } from '@tanstack/react-query';
+import { UseMutationResult, UseQueryResult } from '@tanstack/react-query';
 import { showNotification } from '@mantine/notifications';
+import RatedMovie from '@/types/RatedMovie';
 
-function useQueryError(query: UseQueryResult) {
+function useQueryError(
+  queryResult: UseQueryResult | UseMutationResult<RatedMovie, unknown, RatedMovie, unknown>,
+) {
   useEffect(() => {
-    if (query.isError) {
+    if (queryResult.isError) {
       showNotification({
         message: 'Ha ocurrido un error',
         autoClose: 4000,
         color: 'red',
       });
     }
-  }, [query.isError]);
+  }, [queryResult.isError]);
 }
 
 export default useQueryError;
