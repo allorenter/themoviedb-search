@@ -1,9 +1,16 @@
 import ArrowLeft from '@/icons/ArrowLeft';
 import { Group, UnstyledButton, useMantineTheme } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function GoBackLink() {
   const { colorScheme } = useMantineTheme();
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    console.log('onClick');
+
+    navigate(-1);
+  };
 
   return (
     <UnstyledButton
@@ -18,8 +25,7 @@ function GoBackLink() {
         },
         stroke: colorScheme === 'dark' ? 'white' : 'black',
       })}
-      component={Link}
-      to={'/'}
+      onClick={onClick}
     >
       <Group>
         <ArrowLeft />

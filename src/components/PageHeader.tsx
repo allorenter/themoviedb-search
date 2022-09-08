@@ -1,5 +1,5 @@
 import { Text, Title } from '@mantine/core';
-import GoBackLink from './GoBacklINK';
+import GoBackLink from './GoBackLink';
 
 function PageHeader({
   title,
