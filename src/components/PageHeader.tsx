@@ -1,5 +1,5 @@
-import ArrowLeft from '@/icons/ArrowLeft';
 import { Title } from '@mantine/core';
+import GoBackLink from './GoBacklINK';
 
 function PageHeader({ text, showGoBackButton }: { text?: string; showGoBackButton: boolean }) {
   return (
@@ -12,7 +12,7 @@ function PageHeader({ text, showGoBackButton }: { text?: string; showGoBackButto
       order={3}
       mb={12}
     >
-      {showGoBackButton && <ArrowLeft />}
+      {showGoBackButton && <GoBackLink />}
       {text}
     </Title>
   );
