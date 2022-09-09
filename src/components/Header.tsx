@@ -1,5 +1,6 @@
 import { Header as MantineHeader, NavLink, Group, Box, Container } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import ColorSchemeToggle from './ColorSchemeToggle';
 import MyListLink from './MyListLink';
 
 function Header() {
@@ -18,6 +19,7 @@ function Header() {
           </Box>
           <Box>
             <Group position='right'>
+              <ColorSchemeToggle />
               <MyListLink />
             </Group>
           </Box>
