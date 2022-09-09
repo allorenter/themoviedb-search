@@ -35,6 +35,7 @@ function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
             </Text>
             <Text>{year || ''}</Text>
           </Group>
+          <Space h='xs' />
         </div>
       </Button>
     </Box>
