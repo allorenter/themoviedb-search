@@ -1,3 +1,4 @@
+import { useSearchMoviesPage } from '@/global-states/useSarchMoviesPage';
 import { useSearchMoviesTerm } from '@/global-states/useSearchMoviesTerm';
 import useQueryError from '@/hooks/useQueryError';
 import { useDebouncedValue } from '@mantine/hooks';
@@ -6,10 +7,12 @@ import searchMovies from '../services/searchMovies';
 
 function useSearchMovies() {
   const { searchTerm, setSearchTerm } = useSearchMoviesTerm();
+  const { page } = useSearchMoviesPage();
   const [debouncedSearchTerm] = useDebouncedValue(searchTerm, 400);
+
   const query = useQuery(
-    ['movieSearch', { searchTerm: debouncedSearchTerm }],
-    () => searchMovies(debouncedSearchTerm),
+    ['movieSearch', { searchTerm: debouncedSearchTerm, page }],
+    () => searchMovies(debouncedSearchTerm, page),
     {
       enabled: debouncedSearchTerm.length > 0,
     },

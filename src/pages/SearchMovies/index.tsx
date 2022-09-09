@@ -3,13 +3,18 @@ import useSearchMovies from './hooks/useSearchMovies';
 import SearchResults from './components/SearchResults';
 import PageHeader from '@/components/PageHeader';
 import { Loader, Space, Center } from '@mantine/core';
+import { useSearchMoviesPage } from '@/global-states/useSarchMoviesPage';
 
 function SearchMovies() {
   const { searchTerm, setSearchTerm, data, isFetching, isLoading } = useSearchMovies();
+  const { page, setPage } = useSearchMoviesPage();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchTerm(value);
+    if (page !== 1) {
+      setPage(1);
+    }
   };
 
   return (
