@@ -7,8 +7,6 @@ function GoBackLink() {
   const navigate = useNavigate();
 
   const onClick = () => {
-    console.log('onClick');
-
     navigate(-1);
   };
 
