@@ -1,4 +1,4 @@
-import ArrowLeft from '@/icons/ArrowLeft';
+import { ArrowLeft } from '@/icons';
 import { Group, UnstyledButton, useMantineTheme } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 
