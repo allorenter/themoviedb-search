@@ -14,7 +14,7 @@ function useQueryError(
         color: 'red',
       });
     }
-  }, [queryResult.isError]);
+  }, [queryResult]);
 }
 
 export default useQueryError;
