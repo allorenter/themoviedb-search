@@ -5,7 +5,7 @@ function Layout({ children }: { children: JSX.Element }) {
   return (
     <>
       <Header />
-      <Space h='lg' />
+      <Space h='xl' />
       <Container>{children}</Container>
       <Space h='lg' />
     </>

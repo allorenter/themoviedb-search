@@ -1,4 +1,4 @@
-import { Header as MantineHeader, NavLink, Group, Box, Container } from '@mantine/core';
+import { Header as MantineHeader, NavLink, Group, Box, Container, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import ColorSchemeToggle from './ColorSchemeToggle';
 import MyListLink from './MyListLink';
@@ -6,7 +6,7 @@ import MyListLink from './MyListLink';
 function Header() {
   return (
     <MantineHeader height={70} p='md'>
-      <Container>
+      <Container size={'xl'}>
         <Box
           sx={() => ({
             display: 'flex',
@@ -15,7 +15,15 @@ function Header() {
           })}
         >
           <Box>
-            <NavLink label={'THE MOVIE DB SEARCH'} component={Link} to={'/'} />
+            <NavLink
+              label={
+                <Text weight={600} size={'md'}>
+                  THE MOVIE DB SEARCH
+                </Text>
+              }
+              component={Link}
+              to={'/'}
+            />
           </Box>
           <Box>
             <Group position='right'>
