@@ -1,8 +1,7 @@
 import createAddaptedMovie from '../adapters/createAddaptedMovie';
 import Movie from '../types/Movie';
 import TMDBMovie from '../types/TMDBMovie';
-
-const API_KEY = '8f781d70654b5a6f2fa69770d1d115a3';
+import { API_KEY } from '@/constants';
 
 async function getMovie(movieId?: string): Promise<Movie> {
   const params = new URLSearchParams({
