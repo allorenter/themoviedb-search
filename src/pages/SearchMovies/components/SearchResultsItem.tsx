@@ -24,16 +24,16 @@ function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
       >
         <div>
           <Space h='xs' />
-          <Image src={imagePath} width={180} radius={4} />
+          <Image src={imagePath} width={180} height={270} radius={4} />
           <Space h='xs' />
           <Text weight={700} size='md' sx={() => ({ whiteSpace: 'break-spaces' })}>
             {title}
           </Text>
-          <Group>
+          <Group align={'center'}>
             <Text size='sm' pt='xs'>
               <RateInfo rate={movieResult?.voteAverage} />
             </Text>
-            <Text>{year || ''}</Text>
+            <Text weight={600}>{year || ''}</Text>
           </Group>
           <Space h='xs' />
         </div>
