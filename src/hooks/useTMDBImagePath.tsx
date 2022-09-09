@@ -1,6 +1,8 @@
-function useTMDBImagePath(imagePath: string, fileSize: string, svg = false): string | null {
+import noimage from '@/assets/noimage.png';
+
+function useTMDBImagePath(imagePath: string, fileSize: string, svg = false): string {
   if (!imagePath) {
-    return null;
+    return noimage;
   }
   const baseUrl = `https://image.tmdb.org/t/p/`;
   const imagePathArr = imagePath.split('.');
