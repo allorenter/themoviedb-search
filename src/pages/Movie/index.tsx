@@ -1,6 +1,9 @@
 import PageHeader from '@/components/PageHeader';
+import RateInfo from '@/components/RateInfo';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
-import { Badge, Box, Center, Grid, Group, Image, Loader, Space, Text } from '@mantine/core';
+import dateToLocaleString from '@/utils/dateToLocaleString';
+import minutesConverter from '@/utils/minutesConverter';
+import { Badge, Center, Grid, Group, Image, Loader, Space, Text } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import RateMovie from './components/RateMovie';
 import useGetMovie from './hooks/useGetMovie';
@@ -30,9 +33,9 @@ function Movie() {
           <PageHeader title={pageHeaderTitle} description={data?.originalTitle} showGoBackButton />
           <Space h='lg' />
           <Group>
-            {/* FALTA COMPONENTE PARA MOSTRAR LA VALORACIÓN DE LOS USUARIOS */}
-            <Text weight={700}>{data?.runtime}</Text>
-            <Text weight={700}>{data?.releaseDate}</Text>
+            <RateInfo rate={data?.voteAverage} />
+            <Text weight={700}>{minutesConverter(data?.runtime)}</Text>
+            <Text weight={700}>{dateToLocaleString(data?.releaseDate)}</Text>
             <Text>
               {data?.genres.map(({ id, name }) => (
                 <Badge key={id}>{name}</Badge>
