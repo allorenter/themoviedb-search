@@ -2,8 +2,7 @@ import { createContext, useContext, useState } from 'react';
 
 const initalContextValue: {
   searchTerm: string;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  setSearchTerm: Function;
+  setSearchTerm: (searchTerm: string) => void;
 } = {
   searchTerm: '',
   setSearchTerm: () => undefined,
@@ -14,12 +13,8 @@ const SearchMoviesSearchTermContext = createContext(initalContextValue);
 export const ProvideSearchMoviesTerm = ({ children }: { children: JSX.Element }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const updateSearchTerm = (newSearchTerm: string) => {
-    setSearchTerm(newSearchTerm);
-  };
-
   return (
-    <SearchMoviesSearchTermContext.Provider value={{ searchTerm, setSearchTerm: updateSearchTerm }}>
+    <SearchMoviesSearchTermContext.Provider value={{ searchTerm, setSearchTerm }}>
       {children}
     </SearchMoviesSearchTermContext.Provider>
   );
