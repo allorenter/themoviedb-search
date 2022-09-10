@@ -6,11 +6,11 @@ function SearchResultsPagination({ moviesSearch }: { moviesSearch: MoviesSearch 
   const { page, setPage } = useSearchMoviesPage();
 
   const nextPage = () => {
-    setPage((prevState: number) => prevState + 1);
+    setPage(page + 1);
   };
 
   const previousPage = () => {
-    setPage((prevState: number) => prevState - 1);
+    setPage(page - 1);
   };
 
   if (!moviesSearch.page) {
