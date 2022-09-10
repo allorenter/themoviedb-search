@@ -1,4 +1,4 @@
-import { useSearchMoviesPage } from '@/global-states/useSarchMoviesPage';
+import { useSearchMoviesPage } from '@/global-states/useSearchMoviesPage';
 import { Button, Group, Text } from '@mantine/core';
 import MoviesSearch from '../types/MoviesSearch';
 
