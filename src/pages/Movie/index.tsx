@@ -25,12 +25,12 @@ function Movie() {
   return (
     <>
       <Grid>
-        <Grid.Col span={5}>
+        <Grid.Col xs={12} md={5}>
           <Suspense fallback={<Loader />}>
             <LoadImage mt={10} src={imagePath || undefined} width={300} radius={4} />
           </Suspense>
         </Grid.Col>
-        <Grid.Col span={7}>
+        <Grid.Col xs={12} md={7}>
           <PageHeader title={pageHeaderTitle} description={data?.originalTitle} showGoBackButton />
           <Space h='lg' />
           <Group>
