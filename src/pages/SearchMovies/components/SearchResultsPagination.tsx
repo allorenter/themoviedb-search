@@ -22,32 +22,34 @@ function SearchResultsPagination({ moviesSearch }: { moviesSearch: MoviesSearch 
       <Text size={'sm'} weight={600}>
         Resultados: {moviesSearch.totalResults}
       </Text>
-      <Group align={'end'}>
-        <Text
-          size={'sm'}
-          weight={600}
-        >{`Página ${moviesSearch.page} de ${moviesSearch.totalPages}`}</Text>
-        <Button
-          sx={() => ({ fontSize: '1.1rem' })}
-          variant='light'
-          radius={4}
-          onClick={previousPage}
-          disabled={page === 1}
-          compact
-        >
-          {'<'}
-        </Button>
-        <Button
-          sx={() => ({ fontSize: '1.1rem' })}
-          variant='light'
-          radius={4}
-          onClick={nextPage}
-          disabled={page === moviesSearch.totalPages}
-          compact
-        >
-          {'>'}
-        </Button>
-      </Group>
+      {moviesSearch.totalResults > 0 && (
+        <Group align={'end'}>
+          <Text
+            size={'sm'}
+            weight={600}
+          >{`Página ${moviesSearch.page} de ${moviesSearch.totalPages}`}</Text>
+          <Button
+            sx={() => ({ fontSize: '1.1rem' })}
+            variant='light'
+            radius={4}
+            onClick={previousPage}
+            disabled={page === 1}
+            compact
+          >
+            {'<'}
+          </Button>
+          <Button
+            sx={() => ({ fontSize: '1.1rem' })}
+            variant='light'
+            radius={4}
+            onClick={nextPage}
+            disabled={page === moviesSearch.totalPages}
+            compact
+          >
+            {'>'}
+          </Button>
+        </Group>
+      )}
     </Group>
   );
 }
