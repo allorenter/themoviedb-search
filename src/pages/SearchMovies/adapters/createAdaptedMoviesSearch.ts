@@ -3,7 +3,7 @@ import TMDBMoviesSearch from '../types/TMDBMoviesSearch';
 import TMDBMovieResult from '../types/TMDBMovieResult';
 import MovieResult from '../types/MovieResult';
 
-function createAddaptedMoviesSearch(searchResults: TMDBMoviesSearch): MoviesSearch {
+function createAdaptedMoviesSearch(searchResults: TMDBMoviesSearch): MoviesSearch {
   const results: MovieResult[] = searchResults.results.map((movieResult: TMDBMovieResult) => {
     const year = new Date(movieResult.release_date).getFullYear();
     return {
@@ -29,4 +29,4 @@ function createAddaptedMoviesSearch(searchResults: TMDBMoviesSearch): MoviesSear
   };
 }
 
-export default createAddaptedMoviesSearch;
+export default createAdaptedMoviesSearch;

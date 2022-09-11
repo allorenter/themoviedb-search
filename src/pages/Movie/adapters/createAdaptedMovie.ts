@@ -1,7 +1,7 @@
 import Movie from '../types/Movie';
 import TMDBMovie from '../types/TMDBMovie';
 
-function createAddaptedMovie(tmdbMovie: TMDBMovie): Movie {
+function createAdaptedMovie(tmdbMovie: TMDBMovie): Movie {
   const year = new Date(tmdbMovie.release_date).getFullYear();
 
   return {
@@ -30,4 +30,4 @@ function createAddaptedMovie(tmdbMovie: TMDBMovie): Movie {
   };
 }
 
-export default createAddaptedMovie;
+export default createAdaptedMovie;

@@ -1,4 +1,4 @@
-import createAddaptedMovie from '../adapters/createAddaptedMovie';
+import createAdaptedMovie from '../adapters/createAdaptedMovie';
 import Movie from '../types/Movie';
 import TMDBMovie from '../types/TMDBMovie';
 
@@ -17,7 +17,7 @@ async function getMovie(movieId?: string): Promise<Movie> {
     },
   });
   const tmdbMovie: TMDBMovie = await response.json();
-  return createAddaptedMovie(tmdbMovie);
+  return createAdaptedMovie(tmdbMovie);
 }
 
 export default getMovie;

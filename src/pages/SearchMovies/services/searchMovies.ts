@@ -1,4 +1,4 @@
-import createAddaptedMoviesSearch from '../adapters/createAddaptedMoviesSearch';
+import createAdaptedMoviesSearch from '../adapters/createAdaptedMoviesSearch';
 import TMDBMoviesSearch from '../types/TMDBMoviesSearch';
 import MoviesSearch from '../types/MoviesSearch';
 
@@ -19,7 +19,7 @@ async function searchMovies(query: string, page: number): Promise<MoviesSearch> 
     },
   });
   const tmdbMoviesSearch: TMDBMoviesSearch = await response.json();
-  return createAddaptedMoviesSearch(tmdbMoviesSearch);
+  return createAdaptedMoviesSearch(tmdbMoviesSearch);
 }
 
 export default searchMovies;
