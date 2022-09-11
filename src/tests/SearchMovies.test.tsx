@@ -4,7 +4,7 @@ import SearchMovies from '@/pages/SearchMovies';
 import { movies } from './mocks/handlers';
 import PageWrapper from './PageWrapper';
 
-describe('SearchMovies test', () => {
+describe('SearchMovies tests', () => {
   beforeEach(() => {
     render(<PageWrapper component={<SearchMovies />} route='' />);
   });

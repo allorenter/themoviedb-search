@@ -60,13 +60,24 @@ function RateMovie({ movie }: { movie: Movie }) {
           <Text weight={600} mb={2}>
             Puntuación
           </Text>
-          <NumberInput value={rate} onChange={onChangeRateInput} precision={2} min={0} max={10} />
+          <NumberInput
+            value={rate}
+            onChange={onChangeRateInput}
+            precision={2}
+            min={0}
+            max={10}
+            aria-label='rate-input'
+          />
         </Group>
         <Space h='sm' />
         <Text weight={600} mb={2}>
           Comentarios
         </Text>
-        <Textarea value={comments} onChange={onChangeCommentsInput} />
+        <Textarea
+          value={comments}
+          onChange={onChangeCommentsInput}
+          aria-label='comments-textarea'
+        />
         <Group position='left'>
           <Button
             type='submit'
