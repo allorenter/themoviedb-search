@@ -1,5 +1,5 @@
 import { Suspense, useState, lazy } from 'react';
-import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider, ColorScheme, Center, Loader } from '@mantine/core';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Layout from '@/components/Layout';
@@ -21,28 +21,34 @@ export default function App() {
   };
 
   return (
-    <Suspense fallback={<></>}>
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-          <NotificationsProvider>
-            <QueryClientProvider client={queryClient}>
-              <ProvideSearchMoviesTerm>
-                <ProvideSearchMoviesPage>
-                  <BrowserRouter>
-                    <Layout>
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <NotificationsProvider>
+          <QueryClientProvider client={queryClient}>
+            <ProvideSearchMoviesTerm>
+              <ProvideSearchMoviesPage>
+                <BrowserRouter>
+                  <Layout>
+                    <Suspense
+                      fallback={
+                        <Center mt={12}>
+                          <Loader size={'lg'} height={270} color={'gray'} />
+                        </Center>
+                      }
+                    >
                       <Routes>
                         <Route path='movie/:movieId' element={<Movie />} />
                         <Route path='mylist' element={<MyList />} />
                         <Route path='' element={<SearchMovies />} />
                       </Routes>
-                    </Layout>
-                  </BrowserRouter>
-                </ProvideSearchMoviesPage>
-              </ProvideSearchMoviesTerm>
-            </QueryClientProvider>
-          </NotificationsProvider>
-        </MantineProvider>
-      </ColorSchemeProvider>
-    </Suspense>
+                    </Suspense>
+                  </Layout>
+                </BrowserRouter>
+              </ProvideSearchMoviesPage>
+            </ProvideSearchMoviesTerm>
+          </QueryClientProvider>
+        </NotificationsProvider>
+      </MantineProvider>
+    </ColorSchemeProvider>
   );
 }
