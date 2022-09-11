@@ -1,4 +1,4 @@
-import { useSearchMoviesPage } from '@/global-states/useSarchMoviesPage';
+import { useSearchMoviesPage } from '@/global-states/useSearchMoviesPage';
 import { useSearchMoviesTerm } from '@/global-states/useSearchMoviesTerm';
 import useQueryError from '@/hooks/useQueryError';
 import { useDebouncedValue } from '@mantine/hooks';

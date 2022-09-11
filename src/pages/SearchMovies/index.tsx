@@ -3,7 +3,7 @@ import useSearchMovies from './hooks/useSearchMovies';
 import SearchResults from './components/SearchResults';
 import PageHeader from '@/components/PageHeader';
 import { Loader, Space, Center } from '@mantine/core';
-import { useSearchMoviesPage } from '@/global-states/useSarchMoviesPage';
+import { useSearchMoviesPage } from '@/global-states/useSearchMoviesPage';
 
 function SearchMovies() {
   const { searchTerm, setSearchTerm, data, isFetching, isLoading } = useSearchMovies();
