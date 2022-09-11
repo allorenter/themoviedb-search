@@ -1,20 +1,11 @@
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react';
-import {
-  Space,
-  Textarea,
-  Title,
-  Text,
-  Group,
-  NumberInput,
-  Button,
-  Loader,
-  Center,
-} from '@mantine/core';
+import { Space, Textarea, Title, Text, Group, NumberInput, Button } from '@mantine/core';
 import RatedMovie from '@/types/RatedMovie';
 import useRateMovie from '../hooks/useRateMovie';
 import { showNotification } from '@mantine/notifications';
 import useGetRatedMovie from '../hooks/useGetRatedMovie';
 import Movie from '../types/Movie';
+import Loader from '@/components/Loader';
 
 function RateMovie({ movie }: { movie: Movie }) {
   const [rate, setRate] = useState<number | undefined>();
@@ -55,11 +46,7 @@ function RateMovie({ movie }: { movie: Movie }) {
   };
 
   if (isLoading) {
-    return (
-      <Center mt={12}>
-        <Loader size={'lg'} color={'gray'} />
-      </Center>
-    );
+    return <Loader />;
   }
 
   const disabledSubmitButton = rate === undefined && comments === undefined;

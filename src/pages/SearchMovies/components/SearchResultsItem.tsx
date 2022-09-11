@@ -1,10 +1,11 @@
 import RateInfo from '@/components/RateInfo';
 import LoadImage from '@/components/LoadImage';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
-import { Button, Text, Space, Box, Group, Center, Loader } from '@mantine/core';
+import { Button, Text, Space, Box, Group } from '@mantine/core';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import MovieResult from '../types/MovieResult';
+import Loader from '@/components/Loader';
 
 function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
   const imagePath = useTMDBImagePath(movieResult.posterPath, 'w342');
@@ -26,13 +27,7 @@ function SearchResultsItem({ movieResult }: { movieResult: MovieResult }) {
       >
         <div>
           <Space h='xs' />
-          <Suspense
-            fallback={
-              <Center mt={12}>
-                <Loader size={'lg'} height={270} color={'gray'} />
-              </Center>
-            }
-          >
+          <Suspense fallback={<Loader height={270} />}>
             <LoadImage src={imagePath} width={180} height={270} radius={4} />
           </Suspense>
           <Space h='xs' />

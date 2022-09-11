@@ -4,11 +4,12 @@ import RateInfo from '@/components/RateInfo';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
 import dateToLocaleString from '@/utils/dateToLocaleString';
 import minutesConverter from '@/utils/minutesConverter';
-import { Badge, Center, Grid, Group, Loader, Space, Text } from '@mantine/core';
+import { Badge, Grid, Group, Space, Text } from '@mantine/core';
 import { Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import RateMovie from './components/RateMovie';
 import useGetMovie from './hooks/useGetMovie';
+import Loader from '@/components/Loader';
 
 function Movie() {
   const { movieId } = useParams<string>();
@@ -16,11 +17,7 @@ function Movie() {
   const imagePath = useTMDBImagePath(data?.posterPath || '', 'w342');
 
   if (isLoading) {
-    return (
-      <Center mt={12}>
-        <Loader size={'lg'} color={'gray'} />
-      </Center>
-    );
+    return <Loader />;
   }
 
   const pageHeaderTitle = `${data?.title} (${data?.year})`;
@@ -29,13 +26,7 @@ function Movie() {
     <>
       <Grid>
         <Grid.Col span={5}>
-          <Suspense
-            fallback={
-              <Center mt={12}>
-                <Loader size={'lg'} color={'gray'} />
-              </Center>
-            }
-          >
+          <Suspense fallback={<Loader />}>
             <LoadImage mt={10} src={imagePath || undefined} width={300} radius={4} />
           </Suspense>
         </Grid.Col>

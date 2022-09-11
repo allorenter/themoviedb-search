@@ -1,9 +1,10 @@
 import LoadImage from '@/components/LoadImage';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
 import RatedMovie from '@/types/RatedMovie';
-import { Box, Button, Center, Group, Loader, Text } from '@mantine/core';
+import { Box, Button, Group, Text } from '@mantine/core';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import Loader from '@/components/Loader';
 
 function RatedMovieItem({ ratedMovie }: { ratedMovie: RatedMovie }) {
   const imagePath = useTMDBImagePath(ratedMovie?.posterPath || '', 'w92');
@@ -23,13 +24,7 @@ function RatedMovieItem({ ratedMovie }: { ratedMovie: RatedMovie }) {
       })}
     >
       <Group position='left'>
-        <Suspense
-          fallback={
-            <Center mt={12}>
-              <Loader size={'lg'} color={'gray'} />
-            </Center>
-          }
-        >
+        <Suspense fallback={<Loader />}>
           <LoadImage src={imagePath || undefined} width={92} radius={4} />
         </Suspense>
         <Box>

@@ -1,7 +1,8 @@
 import PageHeader from '@/components/PageHeader';
-import { Center, Loader, Space, Stack } from '@mantine/core';
+import { Space, Stack } from '@mantine/core';
 import RatedMovieItem from './componentes/RatedMovieItem';
 import useGetRatedMovies from './hooks/useGetRatedMovies';
+import Loader from '@/components/Loader';
 
 function MyList() {
   const { data, isLoading, isFetching } = useGetRatedMovies();
@@ -11,9 +12,7 @@ function MyList() {
       <PageHeader title='Mi Lista' showGoBackButton={true} />
       <Space h='lg' />
       {isFetching && isLoading ? (
-        <Center mt={12}>
-          <Loader color={'gray'} />
-        </Center>
+        <Loader />
       ) : (
         <Stack>
           {data?.map((ratedMovie) => (
