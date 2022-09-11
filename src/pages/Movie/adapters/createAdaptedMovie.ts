@@ -16,7 +16,7 @@ function createAdaptedMovie(tmdbMovie: TMDBMovie): Movie {
     originalTitle: tmdbMovie.original_title,
     overview: tmdbMovie.overview,
     popularity: tmdbMovie.popularity,
-    posterPath: tmdbMovie.poster_path,
+    posterPath: tmdbMovie.poster_path || '',
     releaseDate: tmdbMovie.release_date,
     revenue: tmdbMovie.revenue,
     runtime: tmdbMovie.runtime,
