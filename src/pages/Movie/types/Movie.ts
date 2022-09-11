@@ -11,12 +11,9 @@ export default interface Movie {
   overview: string;
   popularity: number;
   posterPath: string;
-  // production_companies: ProductionCompany[];
-  // production_countries: ProductionCountry[];
   releaseDate: string;
   revenue: number;
   runtime: number;
-  // spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
   title: string;

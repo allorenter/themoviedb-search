@@ -3,7 +3,6 @@ import { Genre, ProductionCompany, ProductionCountry, SpokenLanguage } from '@/t
 export default interface TMDBMovie {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection?: any;
   budget: number;
   genres: Genre[];
   homepage: string;
@@ -13,7 +12,7 @@ export default interface TMDBMovie {
   original_title: string;
   overview: string;
   popularity: number;
-  poster_path?: any;
+  poster_path?: string;
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
   release_date: string;
