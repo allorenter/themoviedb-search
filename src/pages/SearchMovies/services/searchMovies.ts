@@ -1,7 +1,8 @@
 import createAddaptedMoviesSearch from '../adapters/createAddaptedMoviesSearch';
 import TMDBMoviesSearch from '../types/TMDBMoviesSearch';
 import MoviesSearch from '../types/MoviesSearch';
-import { API_KEY } from '@/constants';
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 async function searchMovies(query: string, page: number): Promise<MoviesSearch> {
   const params = new URLSearchParams({
