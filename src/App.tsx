@@ -5,7 +5,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Layout from '@/components/Layout';
 import { ProvideSearchMoviesTerm } from './global-states/useSearchMoviesTerm';
 import { NotificationsProvider } from '@mantine/notifications';
-import { ProvideSearchMoviesPage } from './global-states/useSarchMoviesPage';
+import { ProvideSearchMoviesPage } from './global-states/useSearchMoviesPage';
 
 const SearchMovies = lazy(() => import('@/pages/SearchMovies'));
 const Movie = lazy(() => import('@/pages/Movie'));
