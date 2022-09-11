@@ -1,9 +1,11 @@
+import LoadImage from '@/components/LoadImage';
 import PageHeader from '@/components/PageHeader';
 import RateInfo from '@/components/RateInfo';
 import useTMDBImagePath from '@/hooks/useTMDBImagePath';
 import dateToLocaleString from '@/utils/dateToLocaleString';
 import minutesConverter from '@/utils/minutesConverter';
-import { Badge, Center, Grid, Group, Image, Loader, Space, Text } from '@mantine/core';
+import { Badge, Center, Grid, Group, Loader, Space, Text } from '@mantine/core';
+import { Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import RateMovie from './components/RateMovie';
 import useGetMovie from './hooks/useGetMovie';
@@ -27,7 +29,15 @@ function Movie() {
     <>
       <Grid>
         <Grid.Col span={5}>
-          <Image mt={10} src={imagePath || undefined} width={300} radius={4} />
+          <Suspense
+            fallback={
+              <Center mt={12}>
+                <Loader size={'lg'} color={'gray'} />
+              </Center>
+            }
+          >
+            <LoadImage mt={10} src={imagePath || undefined} width={300} radius={4} />
+          </Suspense>
         </Grid.Col>
         <Grid.Col span={7}>
           <PageHeader title={pageHeaderTitle} description={data?.originalTitle} showGoBackButton />
