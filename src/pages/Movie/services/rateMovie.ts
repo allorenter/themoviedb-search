@@ -40,7 +40,7 @@ function rateMovie(ratedMovie: RatedMovie): Promise<RatedMovie> {
 
       setLocalStorageRatedMovies(newRatedMovies);
       return resolve(ratedMovie);
-    } catch (e: any) {
+    } catch (e: unknown) {
       return reject(e);
     }
   });

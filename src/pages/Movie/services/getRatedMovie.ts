@@ -10,7 +10,7 @@ function getRatedMovie(movieId?: number): Promise<RatedMovie | null> {
       const foundRatedMovie = ratedMovies.find(({ id }) => movieId === id);
 
       return resolve(foundRatedMovie || null);
-    } catch (e: any) {
+    } catch (e: unknown) {
       return reject(e);
     }
   });

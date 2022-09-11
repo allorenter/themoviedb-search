@@ -9,7 +9,7 @@ function getRatedMovie(): Promise<RatedMovie[] | undefined> {
       );
 
       return resolve(ratedMovies);
-    } catch (e: any) {
+    } catch (e: unknown) {
       return reject(e);
     }
   });
