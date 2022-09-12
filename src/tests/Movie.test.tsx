@@ -6,7 +6,9 @@ import PageWrapper from './PageWrapper';
 
 describe('Movie tests', () => {
   beforeEach(() => {
-    render(<PageWrapper component={<Movie />} route='/movie/117' />);
+    render(
+      <PageWrapper component={<Movie />} path='/movie/:movieId' route={`/movie/${movie.id}`} />,
+    );
   });
 
   test('Should render movie', async () => {

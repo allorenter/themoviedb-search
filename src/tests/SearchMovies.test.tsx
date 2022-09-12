@@ -6,7 +6,7 @@ import PageWrapper from './PageWrapper';
 
 describe('SearchMovies tests', () => {
   beforeEach(() => {
-    render(<PageWrapper component={<SearchMovies />} route='' />);
+    render(<PageWrapper component={<SearchMovies />} path='' route='' />);
   });
 
   test('Should list movies', async () => {
