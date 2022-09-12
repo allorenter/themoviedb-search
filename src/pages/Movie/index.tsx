@@ -38,7 +38,7 @@ function Movie() {
             <Text weight={700}>{minutesConverter(data?.runtime)}</Text>
             <Text weight={700}>{dateToLocaleString(data?.releaseDate)}</Text>
             <Text>
-              {data?.genres.map(({ id, name }) => (
+              {data?.genres?.map?.(({ id, name }) => (
                 <Badge key={id}>{name}</Badge>
               ))}
             </Text>
