@@ -1,12 +1,13 @@
-import { Suspense, useState, lazy } from 'react';
-import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Layout from '@/components/Layout';
 import { ProvideSearchMoviesTerm } from './global-states/useSearchMoviesTerm';
 import { NotificationsProvider } from '@mantine/notifications';
 import { ProvideSearchMoviesPage } from './global-states/useSearchMoviesPage';
 import Loader from '@/components/Loader';
+import useTheme from './hooks/useTheme';
 
 const SearchMovies = lazy(() => import('@/pages/SearchMovies'));
 const Movie = lazy(() => import('@/pages/Movie'));
@@ -15,20 +16,16 @@ const MyList = lazy(() => import('@/pages/MyList'));
 const queryClient = new QueryClient();
 
 export default function App() {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-
-  const toggleColorScheme = (value?: ColorScheme) => {
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+    <ColorSchemeProvider colorScheme={theme} toggleColorScheme={toggleTheme}>
+      <MantineProvider theme={{ colorScheme: theme }} withGlobalStyles withNormalizeCSS>
         <NotificationsProvider>
           <QueryClientProvider client={queryClient}>
             <ProvideSearchMoviesTerm>
               <ProvideSearchMoviesPage>
-                <BrowserRouter>
+                <HashRouter>
                   <Layout>
                     <Suspense fallback={<Loader />}>
                       <Routes>
@@ -38,7 +35,7 @@ export default function App() {
                       </Routes>
                     </Suspense>
                   </Layout>
-                </BrowserRouter>
+                </HashRouter>
               </ProvideSearchMoviesPage>
             </ProvideSearchMoviesTerm>
           </QueryClientProvider>
