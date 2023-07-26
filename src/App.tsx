@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Layout from '@/components/Layout';
 import { ProvideSearchMoviesTerm } from './global-states/useSearchMoviesTerm';
@@ -25,7 +25,7 @@ export default function App() {
           <QueryClientProvider client={queryClient}>
             <ProvideSearchMoviesTerm>
               <ProvideSearchMoviesPage>
-                <BrowserRouter>
+                <HashRouter>
                   <Layout>
                     <Suspense fallback={<Loader />}>
                       <Routes>
@@ -35,7 +35,7 @@ export default function App() {
                       </Routes>
                     </Suspense>
                   </Layout>
-                </BrowserRouter>
+                </HashRouter>
               </ProvideSearchMoviesPage>
             </ProvideSearchMoviesTerm>
           </QueryClientProvider>
